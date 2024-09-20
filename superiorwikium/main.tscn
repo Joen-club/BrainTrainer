@@ -23,3 +23,4 @@ text = "Start"
 [connection signal="pressed" from="Start_button" to="." method="start_game"]
 
 [editable path="GameManager"]
+[editable path="GameManager/HUD"]
