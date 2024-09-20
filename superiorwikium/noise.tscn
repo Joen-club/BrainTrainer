@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://f3ah86vb1ts4"]
+
+[ext_resource type="Texture2D" uid="uid://bi6iawly7xesx" path="res://Assets/BG_Noise.png" id="1_kp4m1"]
+[ext_resource type="Script" path="res://noise.gd" id="2_723b0"]
+
+[node name="Noise" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.443137)
+position = Vector2(-150, -126)
+texture = ExtResource("1_kp4m1")
+script = ExtResource("2_723b0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5.00001, 11)
+scale = Vector2(12.6, 10)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

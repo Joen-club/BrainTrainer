@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci56y0nc8mhf5"]
+
+[ext_resource type="Script" path="res://back_ground.gd" id="1_263w6"]
+[ext_resource type="PackedScene" uid="uid://f3ah86vb1ts4" path="res://noise.tscn" id="3_ts347"]
+
+[node name="BackGround" type="Node2D"]
+script = ExtResource("1_263w6")
+noise = ExtResource("3_ts347")
+
+[node name="MainBG" type="Sprite2D" parent="."]
+position = Vector2(576.5, 325)
+scale = Vector2(0.644531, 0.632813)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.568
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

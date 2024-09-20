@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://co1yjsov3h7ak"]
+
+[ext_resource type="Script" path="res://Submarine.gd" id="1_5pxa3"]
+[ext_resource type="Texture2D" uid="uid://b0fc6dhr7lv2l" path="res://Assets/Arr1.png" id="2_f0sqt"]
+[ext_resource type="Script" path="res://Submarines/SubmarineSprite.gd" id="3_8aeit"]
+[ext_resource type="Texture2D" uid="uid://pcg0knnehq0j" path="res://icon.svg" id="4_k5ka2"]
+
+[node name="Submarine" type="Node2D"]
+position = Vector2(550, 350)
+script = ExtResource("1_5pxa3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Boat"]]
+position = Vector2(0, 150)
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." groups=["Boat"]]
+position = Vector2(-250, 0)
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." groups=["Boat"]]
+position = Vector2(0, -200)
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." groups=["Boat"]]
+position = Vector2(250, 1)
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." groups=["Boat"]]
+visible = false
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." groups=["Boat"]]
+position = Vector2(-456, -200)
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." groups=["Boat"]]
+position = Vector2(-456, 150)
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Sprite2D8" type="Sprite2D" parent="." groups=["Boat"]]
+position = Vector2(442, 150)
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Sprite2D9" type="Sprite2D" parent="." groups=["Boat"]]
+position = Vector2(413, -200)
+texture = ExtResource("2_f0sqt")
+script = ExtResource("3_8aeit")
+
+[node name="Correct" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_k5ka2")
+
+[node name="Incorrect" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.956863, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_k5ka2")

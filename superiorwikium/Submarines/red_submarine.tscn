@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://12aearhow6lf"]
+
+[ext_resource type="PackedScene" uid="uid://co1yjsov3h7ak" path="res://Submarines/submarine.tscn" id="1_ac7q5"]
+[ext_resource type="Script" path="res://RedSubmarine.gd" id="2_g5ycw"]
+
+[node name="RedSubmarine" instance=ExtResource("1_ac7q5")]
+script = ExtResource("2_g5ycw")
