@@ -1,14 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dk3scfg428j2o"]
+[gd_scene load_steps=7 format=3 uid="uid://dk3scfg428j2o"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_y72jj"]
 [ext_resource type="PackedScene" uid="uid://12aearhow6lf" path="res://Submarines/red_submarine.tscn" id="2_7w176"]
 [ext_resource type="PackedScene" uid="uid://cipd0hdqeoo3d" path="res://Submarines/yellow_submarine.tscn" id="3_58rwp"]
 [ext_resource type="Script" path="res://game_mod_manager.gd" id="4_q26pf"]
-[ext_resource type="Script" path="res://hud.gd" id="4_qthsx"]
-[ext_resource type="PackedScene" uid="uid://ccnqu2d1hlw7c" path="res://performance_review.tscn" id="5_g2x66"]
 [ext_resource type="PackedScene" uid="uid://ci56y0nc8mhf5" path="res://back_ground.tscn" id="5_gasnw"]
-[ext_resource type="Script" path="res://input_indicator.gd" id="7_wri03"]
-[ext_resource type="Texture2D" uid="uid://pcg0knnehq0j" path="res://icon.svg" id="8_gndxg"]
+[ext_resource type="PackedScene" uid="uid://bfrlfwoa4xm7k" path="res://hud.tscn" id="6_38nmp"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_y72jj")
@@ -20,112 +17,5 @@ script = ExtResource("4_q26pf")
 
 [node name="BackGround" parent="." instance=ExtResource("5_gasnw")]
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" parent="." instance=ExtResource("6_38nmp")]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1151.0
-offset_bottom = 651.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_filter = 2
-script = ExtResource("4_qthsx")
-performance_review = ExtResource("5_g2x66")
-
-[node name="Score" type="Panel" parent="HUD"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 535.5
-offset_top = 56.0
-offset_right = 575.5
-offset_bottom = 96.0
-grow_horizontal = 2
-
-[node name="Scoretext" type="Label" parent="HUD/Score"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.5
-offset_top = -11.5
-offset_right = 10.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "##"
-
-[node name="Timer" type="Panel" parent="HUD"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="Time" type="Label" parent="HUD/Timer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "##"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer2" type="Timer" parent="HUD"]
-
-[node name="Main_menu" type="Button" parent="HUD"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 609.0
-offset_right = 45.0
-offset_bottom = 647.0
-
-[node name="InputIndicator" type="ColorRect" parent="HUD"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.597295, 0.140258, 0.157297, 0.368627)
-script = ExtResource("7_wri03")
-
-[node name="TextureRect" type="TextureRect" parent="HUD/InputIndicator"]
-visible = false
-modulate = Color(0, 1, 0, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_gndxg")
-expand_mode = 1
-
-[node name="Timer" type="Timer" parent="HUD/InputIndicator"]
-wait_time = 0.2
-
-[connection signal="time_is_up" from="HUD" to="." method="end"]
-[connection signal="timeout" from="HUD/Timer2" to="HUD" method="_on_timer_timeout"]
-[connection signal="pressed" from="HUD/Main_menu" to="HUD" method="_on_main_menu_pressed"]
-[connection signal="timeout" from="HUD/InputIndicator/Timer" to="HUD/InputIndicator" method="_on_timer_timeout"]

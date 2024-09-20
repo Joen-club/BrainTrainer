@@ -1,5 +1,7 @@
 extends Control
 
+"""Add main node, set up HUD."""
+
 @export var grid: PackedScene
 @export var level: int = 10
 

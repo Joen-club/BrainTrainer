@@ -11,6 +11,7 @@ signal time_is_up
 
 var score = 0
 
+"""Overwrite"""
 var game_performance: Dictionary = {
 	"Score": 0,
 	"Button_press_count": 0,
@@ -27,6 +28,7 @@ func start():
 	label.text = str(game_performance["Score"])
 	time_remains_display.text = str(time_remains_default)
 
+"""Overwrite"""
 func adjust_score(new_score):
 	if new_score > 0:
 		game_performance['Correct_press_count'] += 1

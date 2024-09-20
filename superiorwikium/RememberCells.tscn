@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://6ieacoswvdfp"]
+[gd_scene load_steps=4 format=3 uid="uid://6ieacoswvdfp"]
 
 [ext_resource type="Script" path="res://remember_cells.gd" id="1_4kpxh"]
 [ext_resource type="PackedScene" uid="uid://bg1pyw13j1j16" path="res://remember_cells_grid.tscn" id="2_x524u"]
+[ext_resource type="PackedScene" uid="uid://bfrlfwoa4xm7k" path="res://hud.tscn" id="3_22o4q"]
 
 [node name="RememberCellsManager" type="Control"]
 layout_mode = 3
@@ -31,4 +32,14 @@ offset_right = 66.0
 offset_bottom = 646.0
 text = "Start"
 
+[node name="HUD" parent="." instance=ExtResource("3_22o4q")]
+
+[node name="Main_menu" parent="HUD" index="3"]
+offset_left = 81.0
+offset_top = 608.0
+offset_right = 121.0
+offset_bottom = 646.0
+
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
+
+[editable path="HUD"]
