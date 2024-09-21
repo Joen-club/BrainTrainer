@@ -1,5 +1,10 @@
 res://RememberCells.tscn
+res://back_ground.gd
+res://hud.gd
 res://main.tscn
 res://game_manager.tscn
-res://hud.gd
-res://remember_cells.gd
+res://hud.tscn
+res://main.gd
+res://performance_review.gd
+res://game_manager.gd
+res://Test.tscn

@@ -48,7 +48,6 @@ func create_boat(boat = null):
 	my_boat = new_boat
 
 func end():
-	#background.timer.stop()
 	if my_boat == null: return
 	my_boat.queue_free()
 

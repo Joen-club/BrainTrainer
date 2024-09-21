@@ -19,9 +19,7 @@ func review(data: Dictionary):
 	var correct_press = data["Correct_press_count"]
 	var total_press = data["Button_press_count"]
 	var new_accuracy = float(data["Correct_press_count"])/float(data["Button_press_count"])
-	#snapped(new_accuracy, 0.01)
 	accuracy.text = "Accuracy: " + str(snapped(new_accuracy*100, 0.01)) + "%"
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Restart"):
-		queue_free()
+func end():
+	queue_free()
