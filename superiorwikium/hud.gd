@@ -5,13 +5,15 @@ extends Control
 @onready var timer = $Timer2
 
 @export var time_remains_default: int = 60
+var time_remains: int
+
 @export var performance_review: PackedScene
 
 signal time_is_up
 
 var score = 0
 
-"""Overwrite"""
+"""Generalize for different games."""
 var game_performance: Dictionary = {
 	"Score": 0,
 	"Button_press_count": 0,
@@ -19,16 +21,16 @@ var game_performance: Dictionary = {
 }
 
 func start():
-	
+	time_remains = time_remains_default
 	#Restart
 	for i in game_performance:
 		game_performance[i] = 0
 	
 	timer.start()
 	label.text = str(game_performance["Score"])
-	time_remains_display.text = str(time_remains_default)
+	time_remains_display.text = str(time_remains)
 
-"""Overwrite"""
+"""Generalize for different games."""
 func adjust_score(new_score):
 	if new_score > 0:
 		game_performance['Correct_press_count'] += 1
@@ -40,10 +42,10 @@ func adjust_score(new_score):
 	label.text = str(game_performance["Score"])
 
 func _on_timer_timeout() -> void:
-	time_remains_default -= 1
-	if time_remains_default <= 0:
+	time_remains -= 1
+	if time_remains <= 0:
 		game_over()
-	time_remains_display.text = str(time_remains_default)
+	time_remains_display.text = str(time_remains)
 
 func game_over():
 	emit_signal("time_is_up")
@@ -56,9 +58,5 @@ func create_performance_review():
 	$Main_menu.connect("pressed", new_review.game_ended)
 	new_review.review(game_performance)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Restart"):
-		_on_main_menu_pressed()
-
-func _on_main_menu_pressed() -> void:
+func end():
 	timer.stop()

@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @onready var settings = $Settings
 @onready var game_manager = $GameManager
@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 		start_game()
 
 func _on_main_menu_pressed() -> void:
-	game_manager.end()
+	propagate_call("end")
 	game_manager.visible = false
 	settings.visible = true
 	$Start_button.show()

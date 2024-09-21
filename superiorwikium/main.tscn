@@ -4,13 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://cxwbbpcqemok2" path="res://Settings.tscn" id="2_1aj0c"]
 [ext_resource type="PackedScene" uid="uid://dk3scfg428j2o" path="res://game_manager.tscn" id="3_yekpv"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node"]
 script = ExtResource("1_0c6i0")
 
 [node name="Settings" parent="." instance=ExtResource("2_1aj0c")]
 
 [node name="GameManager" parent="." instance=ExtResource("3_yekpv")]
 visible = false
+
+[node name="HUD" parent="GameManager" index="2"]
+time_remains_default = 5
 
 [node name="Start_button" type="Button" parent="."]
 offset_left = 362.0
