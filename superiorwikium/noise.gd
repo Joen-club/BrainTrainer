@@ -36,7 +36,7 @@ func _ready():
 			position.y = screen_size.y + 50
 			direction = Vector2(randf_range(-0.5, 0.5), -1).normalized() # Move up
 
-func _process(delta):
+func _process(_delta):
 	# Move the object
 	position += direction * speed
 

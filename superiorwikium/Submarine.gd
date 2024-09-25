@@ -38,7 +38,7 @@ func setup_submarine():
 	#set_rotation_degrees(direction.pick_random()) # Randomly rotates the submarine to one of the four directions.
 	velocity = motion_direction.pick_random() #Sets the velocity according to the random direction-motion chosen
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	position += velocity*speed_modifier
 
 #Takes either 'direction' of 'motion_direction' array as a map parameter
@@ -56,8 +56,8 @@ func assign_right_button():
 # Handles user input and checks whether the correct button was pressed.
 func _input(event: InputEvent) -> void:
 	for action in action_map: #Only registering the necessary inputs
-		if Input.is_action_just_pressed(action):
+		if event.is_action_pressed(action):
 			if action == correct_button:
-				emit_signal("input_check", true, self)
+				emit_signal("input_check", true)
 			else:
-				emit_signal("input_check", false, self)
+				emit_signal("input_check", false)

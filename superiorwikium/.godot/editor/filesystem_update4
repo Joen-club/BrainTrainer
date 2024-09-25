@@ -1,10 +1,10 @@
-res://RememberCells.tscn
-res://back_ground.gd
-res://hud.gd
 res://main.tscn
+res://main.gd
+res://RememberCells.tscn
 res://game_manager.tscn
 res://hud.tscn
-res://main.gd
-res://performance_review.gd
-res://game_manager.gd
-res://Test.tscn
+res://SceneHead.tscn
+res://Settings.tscn
+res://remember_cells_grid.tscn
+res://performance_review.tscn
+res://submarine_settings.tscn

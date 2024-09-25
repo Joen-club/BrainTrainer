@@ -8,9 +8,11 @@ extends Node2D
 @onready var HUD: Control = $HUD
 @onready var game_mode_manager = $GameModeManager
 @onready var background = $BackGround
-var my_boat: Node2D ##Reference for the end() func
+var my_boat: Node2D ##Current boat object at play
 
-var game_settings: Dictionary = {
+var input_received: Callable = user_input #Callable(self, "user_input")
+
+var game_settings: Dictionary = { #For debug purposes
 	#"Speed_mod": 1,
 	#"Object": "res://Assets/Arr1.png",
 	#"Color": "?",
@@ -24,7 +26,8 @@ var game_settings: Dictionary = {
 
 func start(new_settings: Dictionary = game_settings):
 	game_settings = new_settings
-	game_mode_manager.game_mode = game_settings["Mode"]
+	game_mode_manager.setup_mode(game_settings["Mode"], game_settings["Mixed"])
+	#game_mode_manager.game_mode = 
 	background.set_BG(game_settings["BG"])
 	create_boat()
 	HUD.start()
@@ -32,29 +35,33 @@ func start(new_settings: Dictionary = game_settings):
 ##FOR SUBMARINE FOR NOW
 ##Picks randomly the type of boat and creates it 
 ##in the same position as the old one (if exists)
-func create_boat(boat = null):
+func create_boat():
 	var new_boat = executables.pick_random().instantiate()
-	var input_received = Callable(self, "user_input")
+	#var input_received = Callable(self, "user_input")
 	new_boat.connect("input_check", input_received)
 	
 	
-	if boat != null:
-		var old_position = boat.global_position
+	if my_boat != null:
+		var old_position = my_boat.global_position
 		new_boat.global_position = old_position
-		boat.queue_free()
-		
+		my_boat.queue_free()
+
+	my_boat = new_boat
 	add_child(new_boat)
 	new_boat.setup_sprite_color_and_speed(game_settings["Object"], game_settings["Color"], game_settings["Speed_mod"])
-	my_boat = new_boat
 
-func end():
+func end(finished: bool = false):
 	if my_boat == null: return
 	my_boat.queue_free()
+	if finished:
+		game_mode_manager.deliver_data()
+		game_mode_manager.end()
+		#DataBase.gather_data({"Game_mode": game_mode_manager.game_mode})
 
-func user_input(correct: bool, boat):
+func user_input(correct: bool):
 	if !correct: 
 		game_mode_manager.adjust_score(-200)
 	else: 
 		game_mode_manager.adjust_score(200)
-		create_boat(boat)
+		create_boat()
 	$HUD/InputIndicator.indicate_input(correct)

@@ -1,45 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://6ieacoswvdfp"]
+[gd_scene load_steps=6 format=3 uid="uid://6ieacoswvdfp"]
 
 [ext_resource type="Script" path="res://remember_cells.gd" id="1_4kpxh"]
+[ext_resource type="PackedScene" uid="uid://cevyu3kf8tcsh" path="res://SceneHead.tscn" id="1_vut4d"]
+[ext_resource type="PackedScene" uid="uid://cxwbbpcqemok2" path="res://Settings.tscn" id="2_k46lv"]
 [ext_resource type="PackedScene" uid="uid://bg1pyw13j1j16" path="res://remember_cells_grid.tscn" id="2_x524u"]
 [ext_resource type="PackedScene" uid="uid://bfrlfwoa4xm7k" path="res://hud.tscn" id="3_22o4q"]
 
-[node name="RememberCellsManager" type="Control"]
+[node name="Node" type="Node"]
+
+[node name="Main" parent="." instance=ExtResource("1_vut4d")]
+settings_path = NodePath("Settings")
+game_manager_path = NodePath("RememberCellsManager")
+
+[node name="Settings" parent="Main" instance=ExtResource("2_k46lv")]
+offset_left = 3.0
+offset_top = -226.0
+offset_right = -932.0
+offset_bottom = -756.0
+
+[node name="RememberCellsManager" type="Control" parent="Main"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_4kpxh")
 grid = ExtResource("2_x524u")
 level = 2
 
-[node name="RememberCellsGrid" parent="." instance=ExtResource("2_x524u")]
-visible = false
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 590.0
-offset_bottom = 285.0
+[node name="HUD" parent="Main/RememberCellsManager" instance=ExtResource("3_22o4q")]
 
-[node name="StartGame" type="Button" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 599.0
-offset_right = 66.0
-offset_bottom = 646.0
-text = "Start"
+[connection signal="time_is_up" from="Main/RememberCellsManager/HUD" to="Main/RememberCellsManager" method="end"]
 
-[node name="HUD" parent="." instance=ExtResource("3_22o4q")]
-
-[node name="Main_menu" parent="HUD" index="3"]
-offset_left = 81.0
-offset_top = 608.0
-offset_right = 121.0
-offset_bottom = 646.0
-
-[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
-
-[editable path="HUD"]
+[editable path="Main"]
+[editable path="Main/RememberCellsManager/HUD"]
