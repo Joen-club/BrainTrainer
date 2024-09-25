@@ -2,6 +2,7 @@ extends Node
 
 var debug: bool = false
 
+#Several nodes access this dict, but each key must be accessed only one time
 var database: Dictionary = {
 	"Game_mode": null,
 	"Score": null,
@@ -16,11 +17,11 @@ func gather_data(new_data: Dictionary):
 	for i in new_data.keys():
 		if database[i] != null:
 			breakpoint
-			print_debug("Shoudn't have a value")
+			print_debug(str(database[i])+ " Shoudn't have a value. Has it been accessed multiple times?")
 		database[i] = new_data[i]
 	if database["Date"] == null:
 		get_current_date_time()
-	if database_ready():
+	if database_ready(): 
 		create_new_entry()
 
 func get_current_date_time():
@@ -28,6 +29,7 @@ func get_current_date_time():
 	database["Date"] = str(date_time['year'])+ "-" + str(date_time['month']) +"-" + str(date_time['day'])
 	database["Time"] = str(date_time['hour'])+":"+str(date_time['minute'])
 
+#If all entries have been filled, the Database is ready to be written
 func database_ready() -> bool:
 	for i in database:
 		if database[i] == null:
@@ -35,7 +37,7 @@ func database_ready() -> bool:
 	return true
 
 func create_new_entry():
-	var file_path = "user://week1.csv"
+	var file_path = "user://week1.csv" #Change the name of the file accordingly
 	var is_new_file = not FileAccess.file_exists(file_path)
 	var file: FileAccess
 
@@ -69,7 +71,7 @@ func create_new_entry():
 	
 	clear_database()
 
+#After the entry has been added, the databased clears
 func clear_database():
 	for i in database:
 		database[i] = null
-	print(database)

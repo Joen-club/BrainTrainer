@@ -26,7 +26,7 @@ func change_visibility():
 	settings.visible = !settings.visible
 
 func _on_main_menu_pressed() -> void:
-	propagate_call("end")
+	propagate_call("end") #end() informs all the necessary members that session has been stopped
 	change_visibility()
 
 #Database will not gather info about session if toggled_on = true

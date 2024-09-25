@@ -8,3 +8,10 @@ res://Settings.tscn
 res://remember_cells_grid.tscn
 res://performance_review.tscn
 res://submarine_settings.tscn
+res://game_manager.gd
+res://submarine_settings.gd
+res://game_mod_manager.gd
+res://hud.gd
+res://input_indicator.gd
+res://performance_review.gd
+res://DataBase.gd
