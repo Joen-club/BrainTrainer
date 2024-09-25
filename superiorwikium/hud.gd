@@ -48,14 +48,13 @@ func _on_timer_timeout() -> void:
 	time_remains_display.text = str(time_remains)
 
 func game_over():
-	emit_signal("time_is_up")
+	emit_signal("time_is_up", true)
 	timer.stop()
 	create_performance_review()
 
 func create_performance_review():
 	var new_review = performance_review.instantiate()
 	add_child(new_review)
-	$Main_menu.connect("pressed", new_review.game_ended)
 	new_review.review(game_performance)
 
 func end():

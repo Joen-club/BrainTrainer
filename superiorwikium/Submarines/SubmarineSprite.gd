@@ -6,7 +6,7 @@ var sprite = get_texture().get_size()
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	wrap_around_screen()
 	pass
 	

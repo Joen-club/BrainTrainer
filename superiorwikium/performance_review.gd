@@ -16,10 +16,10 @@ func review(data: Dictionary):
 	pressed.text = "Pressed: " + str(data["Button_press_count"])
 	pressed_correctly.text = "Correcty: " + str(data["Correct_press_count"])
 	
-	var correct_press = data["Correct_press_count"]
-	var total_press = data["Button_press_count"]
 	var new_accuracy = float(data["Correct_press_count"])/float(data["Button_press_count"])
 	accuracy.text = "Accuracy: " + str(snapped(new_accuracy*100, 0.01)) + "%"
+	
+	DataBase.gather_data({"Score": data["Score"], "Accuracy": new_accuracy, "Press_count": data["Button_press_count"]})
 
 func end():
 	queue_free()

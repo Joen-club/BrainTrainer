@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" path="res://GridMatrix.gd" id="1_46xfc"]
 
-[node name="RememberCellsGrid" type="GridContainer"]
+[node name="RememberCells" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_46xfc")
+
+[node name="Grid" type="GridContainer" parent="."]
+layout_mode = 0
 offset_left = 31.0
 offset_top = 18.0
 offset_right = 621.0
@@ -10,4 +17,13 @@ offset_bottom = 303.0
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 4
-script = ExtResource("1_46xfc")
+
+[node name="HideCells" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 600.0
+offset_right = 154.0
+offset_bottom = 647.0
+text = "Hide"
+
+[connection signal="pressed" from="HideCells" to="." method="hide_cells"]

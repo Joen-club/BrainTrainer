@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhe46dcxixsaq"]
+
+[ext_resource type="Script" path="res://submarine_settings.gd" id="1_lbeio"]
+[ext_resource type="Texture2D" uid="uid://b0fc6dhr7lv2l" path="res://Assets/Arr1.png" id="2_tptt4"]
+[ext_resource type="Texture2D" uid="uid://pcg0knnehq0j" path="res://icon.svg" id="3_ttvia"]
+
+[node name="SubmarineSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lbeio")
+settings = {
+"BG": 0,
+"Color": [Color(1, 0, 0, 1), Color(1, 1, 0, 1)],
+"Mixed": false,
+"Mode": "default",
+"Music": "null",
+"Object": ["res://Assets/Arr1.png", "res://Assets/Arr1.png"],
+"Speed_mod": 1.0
+}
+
+[node name="Object" type="OptionButton" parent="."]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 60.0
+alignment = 1
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "Arrows"
+popup/item_0/icon = ExtResource("2_tptt4")
+popup/item_0/id = 1
+popup/item_1/text = "Arrow+circle"
+popup/item_1/icon = ExtResource("3_ttvia")
+popup/item_1/id = 2
+popup/item_2/text = "Car+Rocket"
+popup/item_2/id = 3
+
+[node name="BG" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 6.0
+offset_right = 189.0
+offset_bottom = 37.0
+item_count = 3
+popup/item_0/text = "NoBG"
+popup/item_1/text = "Cave"
+popup/item_1/id = 1
+popup/item_2/text = "CN"
+popup/item_2/id = 2
+
+[node name="Music" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 22.0
+offset_right = 250.0
+offset_bottom = 42.0
+item_count = 3
+popup/item_0/text = "1"
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+
+[node name="Mode" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 15.0
+offset_right = 481.0
+offset_bottom = 61.0
+selected = 0
+item_count = 3
+popup/item_0/text = "Default"
+popup/item_1/text = "Accuracy"
+popup/item_1/id = 1
+popup/item_2/text = "Speed"
+popup/item_2/id = 2
+
+[node name="Mixed" type="CheckBox" parent="Mode"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = 4.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Mixed"
+
+[node name="Color" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.028
+anchor_bottom = 0.031
+offset_left = 325.0
+offset_top = 26.0
+offset_right = 324.744
+offset_bottom = 25.912
+selected = 0
+item_count = 3
+popup/item_0/text = "RY"
+popup/item_1/text = "BB"
+popup/item_1/id = 1
+popup/item_2/text = "??"
+popup/item_2/id = 2
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 71.0
+offset_right = 183.0
+offset_bottom = 102.0
+scale = Vector2(1, 1.31034)
+min_value = 1.0
+step = 0.25
+value = 1.0
+prefix = "Speed"
+
+[connection signal="item_selected" from="Object" to="." method="_on_item_selected" binds= ["Object"]]
+[connection signal="item_selected" from="BG" to="." method="_on_item_selected" binds= ["BG"]]
+[connection signal="item_selected" from="Music" to="." method="_on_item_selected" binds= ["Music"]]
+[connection signal="item_selected" from="Mode" to="." method="_on_item_selected" binds= ["Mode"]]
+[connection signal="toggled" from="Mode/Mixed" to="." method="_on_mixed_toggled"]
+[connection signal="item_selected" from="Color" to="." method="_on_item_selected" binds= ["Color"]]
+[connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]

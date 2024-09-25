@@ -70,13 +70,6 @@ vertical_alignment = 1
 
 [node name="Timer2" type="Timer" parent="."]
 
-[node name="Main_menu" type="Button" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 609.0
-offset_right = 45.0
-offset_bottom = 647.0
-
 [node name="InputIndicator" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
@@ -110,5 +103,4 @@ expand_mode = 1
 wait_time = 0.2
 
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Main_menu" to="." method="_on_main_menu_pressed"]
 [connection signal="timeout" from="InputIndicator/Timer" to="InputIndicator" method="_on_timer_timeout"]
