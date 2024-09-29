@@ -9,3 +9,9 @@ res://card_manager.tscn
 res://value_container.tscn
 res://compare_cards.tscn
 res://remember_cells_grid.tscn
+res://Submarine_game_manager.tscn
+res://game_manager.gd
+res://card_manager.gd
+res://remember_cells.gd
+res://Submarine_game_manager.gd
+res://new_card.tscn

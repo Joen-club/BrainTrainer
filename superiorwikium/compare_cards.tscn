@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://78jsc2bd8il8"]
+[gd_scene load_steps=7 format=3 uid="uid://78jsc2bd8il8"]
 
 [ext_resource type="PackedScene" uid="uid://cevyu3kf8tcsh" path="res://SceneHead.tscn" id="1_y1f7s"]
 [ext_resource type="PackedScene" uid="uid://cmbjyk2nmghqe" path="res://card_manager.tscn" id="2_76ahc"]
 [ext_resource type="PackedScene" uid="uid://bfrlfwoa4xm7k" path="res://hud.tscn" id="3_3hfwm"]
+[ext_resource type="PackedScene" uid="uid://cuc1eebk3p4ar" path="res://new_card.tscn" id="3_6dtx6"]
 [ext_resource type="PackedScene" uid="uid://cxwbbpcqemok2" path="res://Settings.tscn" id="3_oag24"]
 [ext_resource type="Script" path="res://card_settings.gd" id="4_iiyao"]
 
@@ -14,6 +15,8 @@ game_manager_path = NodePath("CardManager")
 
 [node name="CardManager" parent="Main" instance=ExtResource("2_76ahc")]
 visible = false
+card = ExtResource("3_6dtx6")
+file_name = "CardComparison"
 
 [node name="HUD" parent="Main/CardManager" instance=ExtResource("3_3hfwm")]
 time_remains_default = 4

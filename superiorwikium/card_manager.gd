@@ -1,10 +1,9 @@
-extends Control
+extends GameManager
 """Прогрессирующая сложность"""
 @export var card: PackedScene
 @export var seeds: Array = [1,2,3]
 
 @onready var card_container = $HBoxContainer
-@onready var HUD = $HUD
 
 var values: Dictionary = {"Left": 0,
 						"Right": 0}
@@ -14,10 +13,9 @@ var correct_input: String
 func start(settings: Dictionary):
 	if settings["Seed"] != 0:
 		seed(settings["Seed"])
-	new_cycle()
-	HUD.start()
+	super.start(settings)
 
-func new_cycle():
+func _create_new_game_object():
 	for child in card_container.get_children():
 		child.queue_free()
 	create_card("Left")
@@ -37,10 +35,10 @@ func determine_greater_value():
 func _input(event: InputEvent) -> void:
 	for action in values.keys(): #Only registering the necessary inputs
 		if event.is_action_pressed(action):
-			if action == correct_input:
-				HUD.adjust_score(200)
-			else: HUD.adjust_score(-200)
-			new_cycle()
+			super.user_input(action == correct_input)
+
+func _after_user_input(_correct: bool):
+	_create_new_game_object()
 
 func end(_finished: bool = false) -> void:
 	for i in card_container.get_children():

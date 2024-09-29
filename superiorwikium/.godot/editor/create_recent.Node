@@ -1,7 +1,8 @@
+Control
+Node
 GraphNode
 GraphFrame
 GraphEdit
-Node
 HBoxContainer
 Panel
 Label
@@ -9,5 +10,4 @@ TextureButton
 CheckBox
 Timer
 Button
-Control
 OptionButton
