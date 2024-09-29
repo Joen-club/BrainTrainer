@@ -15,3 +15,5 @@ res://card_manager.gd
 res://remember_cells.gd
 res://Submarine_game_manager.gd
 res://new_card.tscn
+res://Submarine.tscn
+res://new_card.gd

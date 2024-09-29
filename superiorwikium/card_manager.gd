@@ -35,6 +35,7 @@ func determine_greater_value():
 func _input(event: InputEvent) -> void:
 	for action in values.keys(): #Only registering the necessary inputs
 		if event.is_action_pressed(action):
+			$HUD/InputIndicator.indicate_input(action == correct_input)
 			super.user_input(action == correct_input)
 
 func _after_user_input(_correct: bool):

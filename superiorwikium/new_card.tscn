@@ -4,16 +4,11 @@
 
 [node name="new_card" type="Control"]
 layout_mode = 3
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_right = -936.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+anchors_preset = 0
+offset_right = 124.0
+offset_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_4dxja")
 
 [node name="Panel" type="Panel" parent="."]
