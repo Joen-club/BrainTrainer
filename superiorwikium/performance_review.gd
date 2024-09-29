@@ -11,7 +11,6 @@ func review(data: Dictionary):
 	if data["Correct_press_count"] == 0:
 		breakpoint
 		print_debug("CorrectPresses = 0; smth wrong?")
-		return
 	score.text = "Score: " + str(data["Score"])
 	pressed.text = "Pressed: " + str(data["Button_press_count"])
 	pressed_correctly.text = "Correcty: " + str(data["Correct_press_count"])

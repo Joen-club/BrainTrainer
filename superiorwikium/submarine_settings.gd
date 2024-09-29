@@ -15,6 +15,7 @@ var BG_IDs: Dictionary = {
 	2: 2,
 }
 
+#Options for different colors
 var color_IDs: Dictionary = {
 	0: [Color(1,0,0), Color(1, 1, 0)],
 	1: [Color(1,1,1), Color(1,1,1)],
@@ -35,13 +36,17 @@ var mode_IDs: Dictionary = {
 	2: "speed",
 }
 
+#Keys in this dictionary match the binds(what_setting: String) of all the 
+#option buttons that are connected via _on_item_selected. Then it refers these
+#option buttons to the necessary dictionary with options and chooses the option.
 func _ready():
 	setting_dicts = {
 		"BG": BG_IDs,
 		"Object": object_IDs, 
 		"Music": music_IDs,
 		"Mode": mode_IDs,
-		"Color": color_IDs,}
+		"Color": color_IDs,
+		}
 
 #func _on_item_selected(index: int, what_setting: String) -> void:
 	#super._on_item_selected(index, what_setting)

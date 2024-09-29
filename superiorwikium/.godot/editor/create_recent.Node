@@ -1,7 +1,13 @@
-CheckBox
+GraphNode
+GraphFrame
+GraphEdit
+Node
+HBoxContainer
+Panel
 Label
+TextureButton
+CheckBox
 Timer
 Button
 Control
-Node
 OptionButton

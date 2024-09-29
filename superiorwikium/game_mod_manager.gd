@@ -12,8 +12,8 @@ func setup_mode(new_mode: String, mixed: bool = false):
 	game_mode = new_mode
 	mode_indicator.text = game_mode
 	mixed_mode = mixed
-	if mixed: mixed_mode_toggled()
-	#if mixed != mixed_mode:
+	
+	if mixed: timer.start(randi()% 4+2)
 
 func adjust_score(new_score):
 	match game_mode:
@@ -24,31 +24,28 @@ func adjust_score(new_score):
 		"accuracy":
 			accuracy_mode(new_score)
 
+#Mistakes do not deduct points
 func speed_mode(new_score):
 	if new_score < 0:
 		new_score = 0
 	HUD.adjust_score(new_score)
 
+#1 mistake = game_over
 func accuracy_mode(new_score):
 	HUD.adjust_score(new_score)
 	if new_score < 0:
 		HUD.game_over()
 
-#Delete this func?
-func mixed_mode_toggled():
-	#mixed_mode = true
-	timer.start(randi()% 4+2)
-	#else: timer.stop()
-
 func end():
 	timer.stop()
 
+#Randomly changes a game_mode
 func _on_timer_timeout() -> void:
 	var random_number = randi_range(0, 100)
 	if random_number < chance:
 		var game_modes = ["default", "speed", "accuracy"]
-		game_modes.erase(game_mode)
+		game_modes.erase(game_mode) #Current mode can not be chosen
 		setup_mode(game_modes.pick_random(), mixed_mode)
 
-func deliver_data():
-	DataBase.gather_data({"Game_mode": "mixed"}) if mixed_mode else DataBase.gather_data({"Game_mode": game_mode})
+func deliver_data(file_name: String):
+	DataBase.gather_data({"Game_mode": "mixed", "File_name": file_name}) if mixed_mode else DataBase.gather_data({"Game_mode": game_mode, "File_name": file_name})

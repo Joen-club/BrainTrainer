@@ -29,7 +29,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4kpxh")
 grid = ExtResource("2_x524u")
-level = 2
+level_initial = 6
+file_name = "cells"
 
 [node name="HUD" parent="Main/RememberCellsManager" instance=ExtResource("3_22o4q")]
 

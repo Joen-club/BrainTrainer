@@ -13,7 +13,7 @@ signal time_is_up
 
 var score = 0
 
-"""Generalize for different games."""
+"""Generalize for different games...?"""
 var game_performance: Dictionary = {
 	"Score": 0,
 	"Button_press_count": 0,
@@ -22,7 +22,7 @@ var game_performance: Dictionary = {
 
 func start():
 	time_remains = time_remains_default
-	#Restart
+	#if Restart is pressed
 	for i in game_performance:
 		game_performance[i] = 0
 	
@@ -30,7 +30,7 @@ func start():
 	label.text = str(game_performance["Score"])
 	time_remains_display.text = str(time_remains)
 
-"""Generalize for different games."""
+"""Generalize for different games...?"""
 func adjust_score(new_score):
 	if new_score > 0:
 		game_performance['Correct_press_count'] += 1
@@ -52,6 +52,7 @@ func game_over():
 	timer.stop()
 	create_performance_review()
 
+#Creates a panel with results at the end of the session
 func create_performance_review():
 	var new_review = performance_review.instantiate()
 	add_child(new_review)

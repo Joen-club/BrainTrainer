@@ -2,7 +2,11 @@ extends Node
 
 var debug: bool = false
 
+#var file_name: String
+
+#Several nodes access this dict, but each key must be accessed only one time
 var database: Dictionary = {
+	"File_name": null,
 	"Game_mode": null,
 	"Score": null,
 	"Date": null,
@@ -15,19 +19,23 @@ func gather_data(new_data: Dictionary):
 	if debug: return
 	for i in new_data.keys():
 		if database[i] != null:
+			print_debug(str(database[i])+ " Shoudn't have a value. Has it been accessed multiple times?")
 			breakpoint
-			print_debug("Shoudn't have a value")
 		database[i] = new_data[i]
 	if database["Date"] == null:
 		get_current_date_time()
-	if database_ready():
+	if database_ready(): 
 		create_new_entry()
 
 func get_current_date_time():
 	var date_time = Time.get_datetime_dict_from_system()
 	database["Date"] = str(date_time['year'])+ "-" + str(date_time['month']) +"-" + str(date_time['day'])
-	database["Time"] = str(date_time['hour'])+":"+str(date_time['minute'])
+	var proper_minute: String = str(date_time['minute']) #By default the time "4:01" will be "4:1" 
+	if date_time['minute'] < 10:
+		proper_minute = "0" +proper_minute
+	database["Time"] = str(date_time['hour'])+":"+proper_minute
 
+#If all entries have been filled, the Database is ready to be written
 func database_ready() -> bool:
 	for i in database:
 		if database[i] == null:
@@ -35,7 +43,7 @@ func database_ready() -> bool:
 	return true
 
 func create_new_entry():
-	var file_path = "user://week1.csv"
+	var file_path = "user://" + database["File_name"] + ".csv" #Change the name of the file accordingly
 	var is_new_file = not FileAccess.file_exists(file_path)
 	var file: FileAccess
 
@@ -69,7 +77,7 @@ func create_new_entry():
 	
 	clear_database()
 
+#After the entry has been added, the databased clears
 func clear_database():
 	for i in database:
 		database[i] = null
-	print(database)
