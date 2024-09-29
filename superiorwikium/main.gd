@@ -28,6 +28,7 @@ func change_visibility():
 func _on_main_menu_pressed() -> void:
 	propagate_call("end") #end() informs all the necessary members that session has been stopped
 	change_visibility()
+	DataBase.clear_database() #Temporary
 
 #Database will not gather info about session if toggled_on = true
 func _on_debug_toggled(toggled_on: bool) -> void:

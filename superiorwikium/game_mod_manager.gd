@@ -47,5 +47,5 @@ func _on_timer_timeout() -> void:
 		game_modes.erase(game_mode) #Current mode can not be chosen
 		setup_mode(game_modes.pick_random(), mixed_mode)
 
-func deliver_data():
-	DataBase.gather_data({"Game_mode": "mixed"}) if mixed_mode else DataBase.gather_data({"Game_mode": game_mode})
+func deliver_data(file_name: String):
+	DataBase.gather_data({"Game_mode": "mixed", "File_name": file_name}) if mixed_mode else DataBase.gather_data({"Game_mode": game_mode, "File_name": file_name})

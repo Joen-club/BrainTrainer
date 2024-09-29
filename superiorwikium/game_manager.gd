@@ -4,6 +4,7 @@ extends Node2D
 
 ##Contains random objects (e.g. two types of submarines)
 @export var executables: Array 
+@export var file_name: String = "week1"
 
 @onready var HUD: Control = $HUD
 @onready var game_mode_manager = $GameModeManager
@@ -47,7 +48,7 @@ func create_boat():
 #Can be emitted by either a call from a main node or a signal from the HUD
 func end(finished: bool = false):
 	if finished:
-		game_mode_manager.deliver_data()
+		game_mode_manager.deliver_data(file_name)
 		game_mode_manager.end() #Stops the timer when the HUD signal is emitted
 
 	if my_boat == null: return
