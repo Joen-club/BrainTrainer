@@ -3,22 +3,22 @@ extends Control
 @onready var expression = $Expression
 var value: float
 
+@export var min_operations: int = 2
+@export var max_operations: int = 4
+@export var mult_range: int = 10
+@export var add_sub_range: int = 60
+@export var div_range: int = 10
+
 func  _ready() -> void:
-	var k =generate_expression(1,3)
+	var k =generate_expression()
 	expression.text = k
 	value = evaluate_expression(k)
 
-func generate_expression(
-	min_operations = 2,
-	max_operations = 4,
-	mult_range = 10,
-	add_sub_range = 100,
-	div_range = 10
-	) -> String:
+func generate_expression() -> String:
 	"""
 	Generates a random mathematical expression as a string.
 
-	Parameters:
+	Parameters (Variables):
 	min_operations (int): Minimum number of operations in the expression.
 	max_operations (int): Maximum number of operations in the expression.
 	mult_range (int): Maximum value for multiplication operands if 'use_hard_multiplication' is False.

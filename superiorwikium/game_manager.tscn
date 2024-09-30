@@ -1,34 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk3scfg428j2o"]
+[gd_scene load_steps=3 format=3 uid="uid://cqbffoca2wah1"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_y72jj"]
-[ext_resource type="PackedScene" uid="uid://12aearhow6lf" path="res://Submarines/red_submarine.tscn" id="2_7w176"]
-[ext_resource type="PackedScene" uid="uid://cipd0hdqeoo3d" path="res://Submarines/yellow_submarine.tscn" id="3_58rwp"]
-[ext_resource type="Script" path="res://game_mod_manager.gd" id="4_q26pf"]
-[ext_resource type="PackedScene" uid="uid://ci56y0nc8mhf5" path="res://back_ground.tscn" id="5_gasnw"]
 [ext_resource type="PackedScene" uid="uid://bfrlfwoa4xm7k" path="res://hud.tscn" id="6_38nmp"]
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Node"]
 script = ExtResource("1_y72jj")
-executables = [ExtResource("2_7w176"), ExtResource("3_58rwp")]
-
-[node name="GameModeManager" type="Node2D" parent="."]
-position = Vector2(517, 303)
-script = ExtResource("4_q26pf")
-chance = 100
-
-[node name="Timer" type="Timer" parent="GameModeManager"]
-
-[node name="Game_Mode_Indicator" type="Label" parent="GameModeManager"]
-offset_left = 517.0
-offset_top = -205.0
-offset_right = 631.0
-offset_bottom = -144.0
-text = "##"
-
-[node name="BackGround" parent="." instance=ExtResource("5_gasnw")]
+file_name = "DefaultDB"
 
 [node name="HUD" parent="." instance=ExtResource("6_38nmp")]
-unique_name_in_owner = true
-
-[connection signal="timeout" from="GameModeManager/Timer" to="GameModeManager" method="_on_timer_timeout"]
-[connection signal="time_is_up" from="HUD" to="." method="end"]

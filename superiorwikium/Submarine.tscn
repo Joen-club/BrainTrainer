@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5sc2qy75sssf"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_0c6i0"]
-[ext_resource type="PackedScene" uid="uid://bhe46dcxixsaq" path="res://submarine_settings.tscn" id="2_mp7ro"]
-[ext_resource type="PackedScene" uid="uid://dk3scfg428j2o" path="res://game_manager.tscn" id="3_yekpv"]
+[ext_resource type="Script" path="res://main.gd" id="1_p6cp3"]
+[ext_resource type="PackedScene" uid="uid://bhe46dcxixsaq" path="res://submarine_settings.tscn" id="2_6yg2t"]
+[ext_resource type="PackedScene" uid="uid://dk3scfg428j2o" path="res://Submarine_game_manager.tscn" id="3_u8r52"]
 
-[node name="Main" type="Node"]
-script = ExtResource("1_0c6i0")
+[node name="Submarine" type="Node"]
+script = ExtResource("1_p6cp3")
 settings_path = NodePath("SubmarineSettings")
 game_manager_path = NodePath("GameManager")
 
-[node name="SubmarineSettings" parent="." instance=ExtResource("2_mp7ro")]
+[node name="SubmarineSettings" parent="." instance=ExtResource("2_6yg2t")]
 
-[node name="GameManager" parent="." instance=ExtResource("3_yekpv")]
+[node name="GameManager" parent="." instance=ExtResource("3_u8r52")]
 visible = false
 
 [node name="Buttons" type="Control" parent="."]
