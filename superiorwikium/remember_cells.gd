@@ -1,8 +1,8 @@
 extends GameManager
 
 @export var grid: PackedScene
-@export var level_initial: int = 1
-var level: int 
+@export var level_initial: int = 1 #Set the inital amount of rows/columns (min 2x2)
+var level: int #level adds up more rows and columns (+row/+column per 2 levels)
 
 var input_received: Callable = user_input
 var create_next_grid: Callable = _on_next_grid
@@ -43,5 +43,5 @@ func _calculate_score(correct: bool) -> int:
 
 func end(finished: bool = false):
 	super.end(finished)
-	if finished: 
+	if finished: #To be moved to the parent class
 		DataBase.gather_data({"Game_mode": "default", "File_name": file_name})

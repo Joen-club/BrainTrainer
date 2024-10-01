@@ -1,7 +1,7 @@
 extends Settings
 
 var seeds: Dictionary = {
-	0: 0,
+	0: "Random",
 	1: 1,
 	2: 2,
 	3: 3

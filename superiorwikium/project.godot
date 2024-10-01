@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="SuperiorWikium"
+run/main_scene="res://compare_cards.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -59,3 +60,4 @@ Start={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
