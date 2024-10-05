@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://78jsc2bd8il8"]
+[gd_scene load_steps=9 format=3 uid="uid://78jsc2bd8il8"]
 
 [ext_resource type="PackedScene" uid="uid://cevyu3kf8tcsh" path="res://SceneHead.tscn" id="1_y1f7s"]
 [ext_resource type="PackedScene" uid="uid://cmbjyk2nmghqe" path="res://card_manager.tscn" id="2_76ahc"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cuc1eebk3p4ar" path="res://new_card.tscn" id="3_6dtx6"]
 [ext_resource type="PackedScene" uid="uid://cxwbbpcqemok2" path="res://Settings.tscn" id="3_oag24"]
 [ext_resource type="Script" path="res://card_settings.gd" id="4_iiyao"]
+[ext_resource type="Texture2D" uid="uid://pcg0knnehq0j" path="res://icon.svg" id="5_usmlv"]
+[ext_resource type="Script" path="res://TouchButton.gd" id="6_557i1"]
 
 [node name="CompareCards" type="Node"]
 
@@ -15,16 +17,39 @@ game_manager_path = NodePath("CardManager")
 
 [node name="CardManager" parent="Main" instance=ExtResource("2_76ahc")]
 visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 card = ExtResource("3_6dtx6")
 file_name = "CardComparison"
 
 [node name="HUD" parent="Main/CardManager" instance=ExtResource("3_3hfwm")]
+layout_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="Main/CardManager"]
+position = Vector2(202, 517)
+texture_normal = ExtResource("5_usmlv")
+action = "Left"
+visibility_mode = 1
+script = ExtResource("6_557i1")
+
+[node name="Right" type="TouchScreenButton" parent="Main/CardManager"]
+position = Vector2(637, 515)
+texture_normal = ExtResource("5_usmlv")
+action = "Right"
+visibility_mode = 1
+script = ExtResource("6_557i1")
 
 [node name="Settings" parent="Main" instance=ExtResource("3_oag24")]
 mouse_filter = 2
 script = ExtResource("4_iiyao")
 settings = {
-"Seed": 0
+"Seed": "Random"
 }
 
 [node name="OptionButton" parent="Main/Settings" index="0"]
@@ -35,7 +60,13 @@ popup/item_0/text = "Random"
 popup/item_3/text = "3"
 popup/item_3/id = 3
 
+[node name="DataBaseFileName" parent="Main/Settings" index="1"]
+text = "CardComparison"
+
 [connection signal="time_is_up" from="Main/CardManager/HUD" to="Main/CardManager" method="end"]
+[connection signal="button_pressed" from="Main/CardManager/Left" to="Main/CardManager" method="_input"]
+[connection signal="pressed" from="Main/CardManager/Left" to="Main/CardManager/Left" method="_on_pressed"]
+[connection signal="button_pressed" from="Main/CardManager/Right" to="Main/CardManager" method="_input"]
 [connection signal="item_selected" from="Main/Settings/OptionButton" to="Main/Settings" method="_on_item_selected" binds= ["Seed"]]
 
 [editable path="Main"]

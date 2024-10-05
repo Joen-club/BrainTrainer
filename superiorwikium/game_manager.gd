@@ -9,6 +9,7 @@ var current_game_object
 
 func start(settings: Dictionary):
 	game_settings = settings
+	file_name = settings["File_name"]
 	HUD.start()
 	_create_new_game_object()
 
@@ -21,6 +22,7 @@ func user_input(correct: bool):
 	adjust_score(score_delta)
 	_after_user_input(correct)
 
+#Handles specific progress-logic after input depending on a game
 func _after_user_input(_correct: bool):
 	# Abstract method to be implemented in subclasses
 	pass

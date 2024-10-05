@@ -33,3 +33,19 @@ func _on_main_menu_pressed() -> void:
 #Database will not gather info about session if toggled_on = true
 func _on_debug_toggled(toggled_on: bool) -> void:
 	DataBase.debug = toggled_on
+
+
+func _on_trainers_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
+func _on_database_pressed() -> void:
+	$TextEdit.visible = !$TextEdit.visible
+	if not $TextEdit.visible: return
+	var file_path = "user://" + game_manager.file_name + ".csv"
+	var file = FileAccess.open(file_path, FileAccess.ModeFlags.READ)
+	if file:
+		var content = file.get_as_text()
+		file.close()
+		$TextEdit.text = content
+	else:
+		$TextEdit.text = "No data available."

@@ -14,45 +14,144 @@ position = Vector2(0, 150)
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
 
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D2" type="Sprite2D" parent="." groups=["Boat"]]
 position = Vector2(-250, 0)
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
+
+[node name="Label" type="Label" parent="Sprite2D2"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D4" type="Sprite2D" parent="." groups=["Boat"]]
 position = Vector2(0, -200)
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
 
+[node name="Label" type="Label" parent="Sprite2D4"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D3" type="Sprite2D" parent="." groups=["Boat"]]
 position = Vector2(250, 1)
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
+
+[node name="Label" type="Label" parent="Sprite2D3"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D5" type="Sprite2D" parent="." groups=["Boat"]]
 visible = false
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
 
+[node name="Label" type="Label" parent="Sprite2D5"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D6" type="Sprite2D" parent="." groups=["Boat"]]
 position = Vector2(-456, -200)
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
+
+[node name="Label" type="Label" parent="Sprite2D6"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D7" type="Sprite2D" parent="." groups=["Boat"]]
 position = Vector2(-456, 150)
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
 
+[node name="Label" type="Label" parent="Sprite2D7"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D8" type="Sprite2D" parent="." groups=["Boat"]]
 position = Vector2(442, 150)
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
 
+[node name="Label" type="Label" parent="Sprite2D8"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D9" type="Sprite2D" parent="." groups=["Boat"]]
 position = Vector2(413, -200)
 texture = ExtResource("2_f0sqt")
 script = ExtResource("3_8aeit")
+
+[node name="Label" type="Label" parent="Sprite2D9"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 22.0
+pivot_offset = Vector2(18, 18)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Correct" type="Sprite2D" parent="."]
 visible = false

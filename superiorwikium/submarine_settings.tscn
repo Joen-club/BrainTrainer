@@ -121,6 +121,13 @@ step = 0.25
 value = 1.0
 prefix = "Speed"
 
+[node name="DataBaseFileName" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 655.0
+offset_right = 1275.0
+offset_bottom = 712.0
+
 [connection signal="item_selected" from="Object" to="." method="_on_item_selected" binds= ["Object"]]
 [connection signal="item_selected" from="BG" to="." method="_on_item_selected" binds= ["BG"]]
 [connection signal="item_selected" from="Music" to="." method="_on_item_selected" binds= ["Music"]]
@@ -128,3 +135,4 @@ prefix = "Speed"
 [connection signal="toggled" from="Mode/Mixed" to="." method="_on_mixed_toggled"]
 [connection signal="item_selected" from="Color" to="." method="_on_item_selected" binds= ["Color"]]
 [connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="text_changed" from="DataBaseFileName" to="." method="_on_data_base_file_name_text_changed"]

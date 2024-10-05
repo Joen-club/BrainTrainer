@@ -12,7 +12,9 @@ var database: Dictionary = {
 	"Date": null,
 	"Time": null,
 	"Accuracy": null,
-	"Press_count": null
+	"Press_count": null,
+	"Mode_changed": null, #FOR WEEK 3
+	 
 }
 
 func gather_data(new_data: Dictionary):
@@ -38,7 +40,7 @@ func get_current_date_time():
 #If all entries have been filled, the Database is ready to be written
 func database_ready() -> bool:
 	for i in database:
-		if database[i] == null:
+		if database[i] == null and i != "Mode_changed":
 			return false
 	return true
 
@@ -55,7 +57,9 @@ func create_new_entry():
 			print("Failed to create file for writing.")
 			return
 		# Write the header row
-		file.store_line("Game_Mode,Score,Date,Time,Accuracy,Press_count")
+		if database["File_name"] == "week3": ###TEMP FOR WEEK3
+			file.store_line("Game_Mode,Score,Date,Time,Accuracy,Press_count,Mode_changed")
+		else: file.store_line("Game_Mode,Score,Date,Time,Accuracy,Press_count")
 		file.close()
 
 	# Open/Re-open the existing file in READ_WRITE mode
@@ -69,7 +73,12 @@ func create_new_entry():
 	file.seek_end()
 
 	# Write the session data
-	var data_line = "%s,%d,%s,%s,%.2f,%d" % [database["Game_mode"], database["Score"],
+	var data_line ###TEMP FOR WEEK3
+	if database["File_name"] == "week3":
+		data_line = "%s,%d,%s,%s,%.2f,%d,%s" % [database["Game_mode"], database["Score"],
+	database["Date"], database["Time"], database["Accuracy"], database["Press_count"], database["Mode_changed"]]
+	
+	else: data_line = "%s,%d,%s,%s,%.2f,%d" % [database["Game_mode"], database["Score"],
 	database["Date"], database["Time"], database["Accuracy"], database["Press_count"]]
 	file.store_line(data_line)
 

@@ -15,8 +15,10 @@ offset_bottom = 223.0
 
 [node name="Start_button" type="Button" parent="Buttons"]
 layout_mode = 0
-offset_right = 46.0
-offset_bottom = 33.0
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 105.0
+offset_bottom = 43.0
 text = "Start"
 
 [node name="Debug" type="CheckBox" parent="Buttons"]
@@ -24,17 +26,43 @@ layout_mode = 0
 offset_left = -255.0
 offset_top = -2.0
 offset_right = -177.0
-offset_bottom = 40.0
+offset_bottom = 44.0
 text = "Debug"
 
 [node name="Main_menu" type="Button" parent="Buttons"]
 visible = false
 layout_mode = 0
-offset_left = -361.0
-offset_top = 437.0
-offset_right = -314.0
-offset_bottom = 465.0
+offset_left = -325.0
+offset_top = 462.0
+offset_right = -226.0
+offset_bottom = 521.0
+
+[node name="Trainers_Menu" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -138.0
+offset_top = -6.0
+offset_right = -58.0
+offset_bottom = 48.0
+text = "TM"
+
+[node name="Database" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -276.0
+offset_top = 467.0
+offset_right = -181.0
+offset_bottom = 518.0
+text = "DB"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+visible = false
+offset_left = 73.0
+offset_top = 51.0
+offset_right = 1070.0
+offset_bottom = 595.0
+mouse_filter = 1
 
 [connection signal="pressed" from="Buttons/Start_button" to="." method="start_game"]
 [connection signal="toggled" from="Buttons/Debug" to="." method="_on_debug_toggled"]
 [connection signal="pressed" from="Buttons/Main_menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Buttons/Trainers_Menu" to="." method="_on_trainers_menu_pressed"]
+[connection signal="pressed" from="Buttons/Database" to="." method="_on_database_pressed"]

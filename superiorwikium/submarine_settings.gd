@@ -48,6 +48,8 @@ func _ready():
 		"Color": color_IDs,
 		}
 
+	super._ready()
+
 #func _on_item_selected(index: int, what_setting: String) -> void:
 	#super._on_item_selected(index, what_setting)
 
