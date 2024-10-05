@@ -17,10 +17,19 @@ game_manager_path = NodePath("CardManager")
 
 [node name="CardManager" parent="Main" instance=ExtResource("2_76ahc")]
 visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 card = ExtResource("3_6dtx6")
 file_name = "CardComparison"
 
 [node name="HUD" parent="Main/CardManager" instance=ExtResource("3_3hfwm")]
+layout_mode = 1
 
 [node name="Left" type="TouchScreenButton" parent="Main/CardManager"]
 position = Vector2(202, 517)
@@ -33,6 +42,7 @@ script = ExtResource("6_557i1")
 position = Vector2(637, 515)
 texture_normal = ExtResource("5_usmlv")
 action = "Right"
+visibility_mode = 1
 script = ExtResource("6_557i1")
 
 [node name="Settings" parent="Main" instance=ExtResource("3_oag24")]
@@ -49,6 +59,9 @@ item_count = 4
 popup/item_0/text = "Random"
 popup/item_3/text = "3"
 popup/item_3/id = 3
+
+[node name="DataBaseFileName" parent="Main/Settings" index="1"]
+text = "CardComparison"
 
 [connection signal="time_is_up" from="Main/CardManager/HUD" to="Main/CardManager" method="end"]
 [connection signal="button_pressed" from="Main/CardManager/Left" to="Main/CardManager" method="_input"]

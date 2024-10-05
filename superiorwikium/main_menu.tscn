@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1rm5871n010p"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_bbv1n"]
+[ext_resource type="Texture2D" uid="uid://bk66xa1cpn4do" path="res://Assets/Sub1.png" id="2_gvkk5"]
+[ext_resource type="Texture2D" uid="uid://bnppgd2k13g4y" path="res://Assets/Sub2.png" id="3_vxpbn"]
+[ext_resource type="Texture2D" uid="uid://dxkmqq0h1l2bd" path="res://Assets/Tile.png" id="4_c1a5e"]
+[ext_resource type="Texture2D" uid="uid://dm8jpmqe0gb27" path="res://Assets/TileSelected.png" id="5_t1ay2"]
+[ext_resource type="Texture2D" uid="uid://dh7u26snextjx" path="res://Assets/Background.webp" id="6_ps3p0"]
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bbv1n")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -270.0
+offset_right = 183.0
+offset_bottom = 85.0
+grow_horizontal = 2
+text = "Choose a trainer"
+horizontal_alignment = 1
+
+[node name="Submarine" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 88.0
+offset_right = 436.0
+offset_bottom = 254.0
+texture_normal = ExtResource("2_gvkk5")
+texture_hover = ExtResource("3_vxpbn")
+
+[node name="RememberCells" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 85.0
+offset_right = 597.0
+offset_bottom = 251.0
+texture_normal = ExtResource("4_c1a5e")
+texture_hover = ExtResource("5_t1ay2")
+
+[node name="CompareCards" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 77.0
+offset_right = 846.0
+offset_bottom = 216.0
+texture_normal = ExtResource("6_ps3p0")
+texture_hover = ExtResource("3_vxpbn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="Submarine" to="." method="trainer_chosen" binds= ["Submarine"]]
+[connection signal="pressed" from="RememberCells" to="." method="trainer_chosen" binds= ["RememberCells"]]
+[connection signal="pressed" from="CompareCards" to="." method="trainer_chosen" binds= ["compare_cards"]]

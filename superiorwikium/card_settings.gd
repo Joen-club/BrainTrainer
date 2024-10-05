@@ -9,3 +9,4 @@ var seeds: Dictionary = {
 
 func _ready() -> void:
 	setting_dicts = {"Seed": seeds}
+	super._ready()

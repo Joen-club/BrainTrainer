@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5sc2qy75sssf"]
+[gd_scene load_steps=5 format=3 uid="uid://c5sc2qy75sssf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_p6cp3"]
 [ext_resource type="PackedScene" uid="uid://bhe46dcxixsaq" path="res://submarine_settings.tscn" id="2_6yg2t"]
 [ext_resource type="PackedScene" uid="uid://dk3scfg428j2o" path="res://Submarine_game_manager.tscn" id="3_u8r52"]
+[ext_resource type="Texture2D" uid="uid://pcg0knnehq0j" path="res://icon.svg" id="4_3tgkv"]
 
 [node name="Submarine" type="Node"]
 script = ExtResource("1_p6cp3")
@@ -11,8 +12,58 @@ game_manager_path = NodePath("GameManager")
 
 [node name="SubmarineSettings" parent="." instance=ExtResource("2_6yg2t")]
 
+[node name="DataBaseFileName" parent="SubmarineSettings" index="6"]
+offset_left = 1132.0
+offset_top = 650.0
+offset_right = 1276.0
+offset_bottom = 708.0
+text = "week2"
+
 [node name="GameManager" parent="." instance=ExtResource("3_u8r52")]
 visible = false
+file_name = "week2"
+
+[node name="HUD" parent="GameManager" index="2"]
+offset_right = 1279.0
+offset_bottom = 721.0
+
+[node name="Score" parent="GameManager/HUD" index="0"]
+offset_top = 104.0
+offset_bottom = 167.0
+
+[node name="Timer" parent="GameManager/HUD" index="1"]
+offset_left = -60.0
+offset_top = 32.0
+offset_right = -1.0
+offset_bottom = 89.0
+
+[node name="TouchButtons" type="Node2D" parent="GameManager"]
+modulate = Color(1, 1, 1, 0.458824)
+
+[node name="Up" type="TouchScreenButton" parent="GameManager/TouchButtons"]
+position = Vector2(583, 409)
+texture_normal = ExtResource("4_3tgkv")
+action = "Up"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="GameManager/TouchButtons"]
+position = Vector2(770, 569)
+texture_normal = ExtResource("4_3tgkv")
+action = "Right"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="GameManager/TouchButtons"]
+position = Vector2(399, 565)
+texture_normal = ExtResource("4_3tgkv")
+action = "Left"
+visibility_mode = 1
+
+[node name="Down" type="TouchScreenButton" parent="GameManager/TouchButtons"]
+position = Vector2(577, 565)
+scale = Vector2(1.07031, 1)
+texture_normal = ExtResource("4_3tgkv")
+action = "Down"
+visibility_mode = 1
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3
@@ -43,14 +94,45 @@ text = "Debug"
 editor_description = "Visible only while playing a trainer, not visible in main menu"
 visible = false
 layout_mode = 0
-offset_left = -362.0
-offset_top = 425.0
-offset_right = -311.0
-offset_bottom = 466.0
+offset_left = -336.0
+offset_top = 485.0
+offset_right = -285.0
+offset_bottom = 526.0
 
+[node name="Trainers_Menu" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -138.0
+offset_top = -6.0
+offset_right = -58.0
+offset_bottom = 48.0
+text = "TM"
+
+[node name="Database" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -337.0
+offset_top = 465.0
+offset_right = -242.0
+offset_bottom = 516.0
+text = "DB"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+visible = false
+offset_left = 73.0
+offset_top = 51.0
+offset_right = 1070.0
+offset_bottom = 595.0
+mouse_filter = 1
+
+[connection signal="pressed" from="GameManager/TouchButtons/Up" to="GameManager" method="touch_button_pressed" binds= ["Up"]]
+[connection signal="pressed" from="GameManager/TouchButtons/Right" to="GameManager" method="touch_button_pressed" binds= ["Right"]]
+[connection signal="pressed" from="GameManager/TouchButtons/Left" to="GameManager" method="touch_button_pressed" binds= ["Left"]]
+[connection signal="pressed" from="GameManager/TouchButtons/Down" to="GameManager" method="touch_button_pressed" binds= ["Down"]]
 [connection signal="pressed" from="Buttons/Start_button" to="." method="start_game"]
 [connection signal="toggled" from="Buttons/Debug" to="." method="_on_debug_toggled"]
 [connection signal="pressed" from="Buttons/Main_menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Buttons/Trainers_Menu" to="." method="_on_trainers_menu_pressed"]
+[connection signal="pressed" from="Buttons/Database" to="." method="_on_database_pressed"]
 
+[editable path="SubmarineSettings"]
 [editable path="GameManager"]
 [editable path="GameManager/HUD"]

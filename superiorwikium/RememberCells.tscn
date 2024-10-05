@@ -12,11 +12,24 @@
 settings_path = NodePath("Settings")
 game_manager_path = NodePath("RememberCellsManager")
 
+[node name="Database" parent="Main/Buttons" index="4"]
+offset_left = -331.0
+offset_top = 470.0
+offset_right = -236.0
+offset_bottom = 521.0
+
 [node name="Settings" parent="Main" instance=ExtResource("2_k46lv")]
 offset_left = 3.0
 offset_top = -226.0
 offset_right = -932.0
 offset_bottom = -756.0
+
+[node name="DataBaseFileName" parent="Main/Settings" index="1"]
+offset_left = 1140.0
+offset_top = 887.0
+offset_right = 1259.0
+offset_bottom = 934.0
+text = "cells"
 
 [node name="RememberCellsManager" type="Control" parent="Main"]
 visible = false
@@ -33,8 +46,10 @@ level_initial = 6
 file_name = "cells"
 
 [node name="HUD" parent="Main/RememberCellsManager" instance=ExtResource("3_22o4q")]
+layout_mode = 1
 
 [connection signal="time_is_up" from="Main/RememberCellsManager/HUD" to="Main/RememberCellsManager" method="end"]
 
 [editable path="Main"]
+[editable path="Main/Settings"]
 [editable path="Main/RememberCellsManager/HUD"]

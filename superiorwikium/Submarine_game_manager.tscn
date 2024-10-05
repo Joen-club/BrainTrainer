@@ -14,21 +14,21 @@ executables = [ExtResource("2_7w176"), ExtResource("3_58rwp")]
 [node name="GameModeManager" type="Node2D" parent="."]
 position = Vector2(517, 303)
 script = ExtResource("4_q26pf")
-chance = 100
 
 [node name="Timer" type="Timer" parent="GameModeManager"]
-
-[node name="Game_Mode_Indicator" type="Label" parent="GameModeManager"]
-offset_left = 517.0
-offset_top = -205.0
-offset_right = 631.0
-offset_bottom = -144.0
-text = "##"
 
 [node name="BackGround" parent="." instance=ExtResource("5_gasnw")]
 
 [node name="HUD" parent="." instance=ExtResource("6_38nmp")]
 unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1278.0
+offset_bottom = 724.0
+grow_horizontal = 1
+grow_vertical = 1
 
+[connection signal="mode_changed" from="GameModeManager" to="." method="_on_game_mode_manager_mode_changed"]
 [connection signal="timeout" from="GameModeManager/Timer" to="GameModeManager" method="_on_timer_timeout"]
 [connection signal="time_is_up" from="HUD" to="." method="end"]

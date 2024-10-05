@@ -22,11 +22,13 @@ func _ready() -> void:
 	setup_submarine()
 	assign_right_button()
 
-func setup_sprite_color_and_speed(sprite_path: Array, color: Array, speed: float):
+func setup_sprite_color_and_speed(sprite_path: Array, color: Array, speed: float, mode: String):
 	for i in get_children():
 		if i is Sprite2D:
 			i.texture = load(sprite_path[boat_id])
 			i.self_modulate = color[boat_id]
+			if i.is_in_group("Boat"):
+				i.mode_indicator.text = mode[0]
 	speed_modifier = speed
 
 # Function to randomize the submarine's initial rotation and movement.
@@ -35,6 +37,8 @@ func setup_submarine():
 	for i in get_children():
 		if i.is_in_group("Boat"):
 			i.set_rotation_degrees(boat_rotation)
+			i.mode_indicator.set_rotation_degrees(-boat_rotation)
+			#i.mode_indicator.visible = false #####COMMENT FOR WEEK3
 	#set_rotation_degrees(direction.pick_random()) # Randomly rotates the submarine to one of the four directions.
 	velocity = motion_direction.pick_random() #Sets the velocity according to the random direction-motion chosen
 	
@@ -48,6 +52,11 @@ func setup_map(map: Array):
 	for i in map:
 		button_map[map[count]] = action_map[count]
 		count+= 1
+
+func show_mode(new_mode: String):
+	for i in get_children():
+		if i.is_in_group("Boat"):
+			i.mode_indicator.text = new_mode[0]
 
 # Function to assign the correct button that needs to be pressed
 func assign_right_button():

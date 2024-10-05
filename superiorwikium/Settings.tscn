@@ -23,3 +23,12 @@ popup/item_1/text = "1"
 popup/item_1/id = 1
 popup/item_2/text = "2"
 popup/item_2/id = 2
+
+[node name="DataBaseFileName" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 1156.0
+offset_top = 663.0
+offset_right = 1275.0
+offset_bottom = 710.0
+
+[connection signal="text_changed" from="DataBaseFileName" to="." method="_on_data_base_file_name_text_changed"]

@@ -2,6 +2,7 @@ extends Sprite2D
 
 var screen_size: Vector2
 var sprite = get_texture().get_size()
+@onready var mode_indicator: Label = $Label
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size

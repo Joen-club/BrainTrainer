@@ -11,9 +11,9 @@ script = ExtResource("1_3lti1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 263.0
-offset_top = 234.0
-offset_right = 885.0
-offset_bottom = 468.0
+offset_left = 158.0
+offset_top = 154.0
+offset_right = 937.0
+offset_bottom = 416.0
 mouse_filter = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 175

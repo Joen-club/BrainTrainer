@@ -69,7 +69,7 @@ func create_new_cell() -> TextureButton:
 func _on_tile_pressed(tile: TextureButton):
 	if !game_started: return
 	if tile.modulate != Color(1, 1, 1): return
-
+	var share  =1
 	if chosen_cells.has(tile):
 		tile.modulate = Color(0, 1, 0)
 		emit_signal("input_check", true)

@@ -9,6 +9,7 @@ var current_game_object
 
 func start(settings: Dictionary):
 	game_settings = settings
+	file_name = settings["File_name"]
 	HUD.start()
 	_create_new_game_object()
 

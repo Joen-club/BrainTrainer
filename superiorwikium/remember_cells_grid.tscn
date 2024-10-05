@@ -20,17 +20,17 @@ columns = 4
 
 [node name="HideCells" type="Button" parent="."]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 600.0
-offset_right = 154.0
-offset_bottom = 647.0
+offset_left = 533.0
+offset_top = 560.0
+offset_right = 620.0
+offset_bottom = 625.0
 text = "Hide"
 
 [node name="AmountOfClicks" type="Label" parent="."]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 599.0
-offset_right = 335.0
-offset_bottom = 646.0
+offset_left = 626.0
+offset_top = 575.0
+offset_right = 801.0
+offset_bottom = 622.0
 
 [connection signal="pressed" from="HideCells" to="." method="hide_cells"]
